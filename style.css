@@ -39,6 +39,8 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
+/* a swipe track or drifting mist must never widen the page on phones */
+main > section { overflow-x: clip; }
 img, svg { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 ul { list-style: none; }
@@ -330,7 +332,7 @@ html.anim .s-photo::after { background: radial-gradient(closest-side, rgba(15, 2
 .lib-head { padding: clamp(90px, 11vw, 150px) var(--pad) 36px; display: flex; flex-direction: column; gap: 22px; }
 .lib-track {
   display: flex; gap: clamp(24px, 4vw, 56px); padding: 8px var(--pad) 20px;
-  overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--pad); -webkit-overflow-scrolling: touch; scrollbar-width: none;
 }
 .lib-track::-webkit-scrollbar { display: none; }
 .panel { flex: 0 0 min(80vw, 380px); scroll-snap-align: start; display: flex; flex-direction: column; gap: 22px; }
@@ -494,9 +496,9 @@ html.anim .craft-lines path { stroke-dashoffset: 1; }
 }
 
 @media (max-width: 1199px) {
-  .river-text { grid-column: 1 / span 6; }
+  .river-text { grid-column: 1 / span 6; grid-row: 1 / span 3; }
   .f1 { grid-column: 7 / span 6; }
-  .f2 { grid-column: 1 / span 5; }
+  .f2 { grid-column: 1 / span 5; grid-row: 4 / span 2; margin-top: clamp(24px, 4vw, 48px); }
   .f3 { grid-column: 8 / span 4; }
   .best-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .visit-inner { grid-template-columns: 1fr; }
@@ -538,7 +540,7 @@ html.anim .craft-lines path { stroke-dashoffset: 1; }
 
   .callout { font-size: 25px; background: rgba(243, 237, 226, .88); padding: 8px 12px; border-radius: 2px; }
   .callout.c1 { left: 4%; top: 28%; }
-  .callout.c2 { right: 4%; top: 49%; }
+  .callout.c2 { right: 4%; top: 37%; }
   .callout.c3 { left: 4%; top: 70%; }
   .craft-foot { font-size: 15px; bottom: 2.2svh; }
 
@@ -552,6 +554,28 @@ html.anim .craft-lines path { stroke-dashoffset: 1; }
   .foot-copy { text-align: center; }
 }
 
+/* ---------- phones: touch-first details ---------- */
+.swipe-hint { display: none; }
+@keyframes nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(8px); } }
+@keyframes glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(217, 138, 43, .0); } 50% { box-shadow: 0 0 44px 4px rgba(217, 138, 43, .45); } }
+
+@media (max-width: 767px) {
+  .swipe-hint { display: inline-flex; align-items: center; gap: 10px; font: 600 11px/1 var(--ff-body); letter-spacing: .22em; text-transform: uppercase; color: var(--deodar); transition: opacity .5s; }
+  .swipe-hint svg { animation: nudge 1.6s var(--ease) infinite; }
+  .swipe-hint.is-gone { opacity: 0; }
+  .lib-track { padding-inline: var(--pad); }
+  .panel { transform-origin: 50% 40%; will-change: transform, opacity; }
+  html.anim .card-img img { height: 116%; margin-top: -8%; }
+  .card.seen .card-name span { background-size: 100% 1px; }
+  .btn-xl { padding: 22px 36px; }
+}
+@media (hover: none) {
+  .btn:active { transform: scale(.97); }
+  .link-arrow:active, .more:active { opacity: .6; }
+  .card:active .card-img img { transform: scale(1.04); }
+  .btn-xl { animation: glow 2.8s ease-in-out infinite; }
+}
+
 @media (max-height: 560px) and (min-width: 768px) {
   .hero-sub { display: none; }
 }
@@ -561,7 +585,7 @@ html.anim .craft-lines path { stroke-dashoffset: 1; }
    ========================================================================== */
 html.rm .rm-fade { opacity: 0; transition: opacity .4s ease; }
 html.rm .rm-fade.in { opacity: 1; }
-html.rm .mist, html.rm .scroll-cue i::after { animation: none; }
+html.rm .mist, html.rm .scroll-cue i::after, html.rm .btn-xl, html.rm .swipe-hint svg { animation: none; }
 html.rm .nav, html.rm .menu, html.rm .menu nav a, html.rm .card-img img, html.rm .btn { transition-duration: .01ms; }
 html.rm .s-photo { margin-top: 8px; }
 @media (prefers-reduced-motion: reduce) {

@@ -193,16 +193,44 @@
     if (cur) cur.textContent = String(Math.round(p * 4) + 1).padStart(2, '0');
   }
 
-  function bindCarousel() {
+  // Swipe carousel. With fx on (animated phones) the card nearest the centre
+  // stays full size while its neighbours shrink and fade, and photos slide inside their frames.
+  function bindCarousel(fx) {
     const track = $('#libTrack');
     if (!track) return () => {};
-    const onScroll = () => {
+    const panels = $$('.panel', track);
+    const hint = $('.swipe-hint');
+    let ticking = false;
+
+    const update = () => {
+      ticking = false;
       const max = track.scrollWidth - track.clientWidth;
       setLibProgress(max > 0 ? Math.min(1, Math.max(0, track.scrollLeft / max)) : 0);
+      if (hint && track.scrollLeft > 8) hint.classList.add('is-gone');
+      if (!fx) return;
+      const mid = track.scrollLeft + track.clientWidth / 2;
+      panels.forEach((p) => {
+        const off = p.offsetLeft + p.offsetWidth / 2 - mid;
+        const d = Math.min(1, Math.abs(off) / (track.clientWidth * 0.75));
+        p.style.transform = `scale(${1 - 0.07 * d})`;
+        p.style.opacity = String(1 - 0.5 * d);
+        const img = p.querySelector('.panel-img img');
+        if (img) img.style.transform = `translateX(${(-off * 0.07).toFixed(1)}px)`;
+      });
     };
+    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
     track.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-    return () => track.removeEventListener('scroll', onScroll);
+    window.addEventListener('resize', onScroll);
+    update();
+    return () => {
+      track.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      panels.forEach((p) => {
+        p.style.transform = ''; p.style.opacity = '';
+        const img = p.querySelector('.panel-img img');
+        if (img) img.style.transform = '';
+      });
+    };
   }
 
   /* ==========================================================================
@@ -420,13 +448,14 @@
   }
 
   /* Chapter 2 — three lines, pinned for 150% */
-  function source() {
+  function source(isDesktop) {
     const stage = $('.source-stage');
     const lines = $$('.s-line', stage);
     const photos = $$('.s-photo', stage);
     const sub = $('.s-sub', stage);
     const bg = $('.source-bg', stage);
-    const hidden = { opacity: 0, filter: 'blur(14px)', y: 30 };
+    const blur = isDesktop ? 14 : 6; // lighter blur keeps phones at 60fps
+    const hidden = { opacity: 0, filter: `blur(${blur}px)`, y: 30 };
 
     gsap.set(lines.slice(1), hidden);
     gsap.set(photos, { opacity: 0, scale: 0.9 });
@@ -434,12 +463,13 @@
 
     const tl = gsap.timeline({
       defaults: { ease: 'none' },
-      scrollTrigger: { trigger: stage, start: 'top top', end: '+=150%', pin: true, scrub: 1, anticipatePin: 1 }
+      // shorter pin on phones so a thumb-flick never feels stuck
+      scrollTrigger: { trigger: stage, start: 'top top', end: isDesktop ? '+=150%' : '+=115%', pin: true, scrub: 1, anticipatePin: 1 }
     });
     tl.to(bg, { opacity: 1, duration: 3 }, 0)
       .to(photos[0], { opacity: 0.6, scale: 1, duration: 0.5 }, 0);
     for (let i = 0; i < 2; i += 1) {
-      tl.to(lines[i], { opacity: 0, filter: 'blur(14px)', y: -30, duration: 0.4 }, i + 0.7)
+      tl.to(lines[i], { opacity: 0, filter: `blur(${blur}px)`, y: -30, duration: 0.4 }, i + 0.7)
         .to(photos[i], { opacity: 0, scale: 1.08, duration: 0.4 }, i + 0.7)
         .to(lines[i + 1], { opacity: 1, filter: 'blur(0px)', y: 0, duration: 0.45 }, i + 0.9)
         .to(photos[i + 1], { opacity: 0.6, scale: 1, duration: 0.5 }, i + 0.9);
@@ -471,7 +501,7 @@
   function library(isDesktop) {
     const track = $('#libTrack');
     const stage = $('.lib-stage');
-    if (!isDesktop) return bindCarousel();
+    if (!isDesktop) return bindCarousel(true);
 
     root.classList.add('anim-h');
     const distance = () => Math.max(0, track.scrollWidth - window.innerWidth);
@@ -498,7 +528,7 @@
   }
 
   /* Chapter 5 — three scenes, colour shifts, sun travels the arc and becomes a moon */
-  function rituals() {
+  function rituals(isDesktop) {
     const sec = $('#chapter-5');
     const stage = $('.rit-stage', sec);
     const scenes = $$('.scene', stage);
@@ -522,7 +552,7 @@
     const tl = gsap.timeline({
       defaults: { ease: 'none' },
       scrollTrigger: {
-        trigger: stage, start: 'top top', end: '+=200%', pin: true, scrub: 1, anticipatePin: 1,
+        trigger: stage, start: 'top top', end: isDesktop ? '+=200%' : '+=160%', pin: true, scrub: 1, anticipatePin: 1,
         onUpdate: (self) => {
           place(self.progress);
           const isNight = self.progress > 0.66;
@@ -557,7 +587,7 @@
   }
 
   /* Chapter 6 — pouch grows, callouts draw themselves */
-  function craft() {
+  function craft(isDesktop) {
     const stage = $('#craftStage');
     const frame = $('.pouch-frame', stage);
     const svg = $('#craftLines');
@@ -577,7 +607,7 @@
 
     const tl = gsap.timeline({
       defaults: { ease: 'none' },
-      scrollTrigger: { trigger: stage, start: 'top top', end: '+=180%', pin: true, scrub: 1, anticipatePin: 1 }
+      scrollTrigger: { trigger: stage, start: 'top top', end: isDesktop ? '+=180%' : '+=140%', pin: true, scrub: 1, anticipatePin: 1 }
     });
     tl.to(frame, { scale: FINAL_SCALE, duration: 2 }, 0);
     callouts.forEach((c, i) => {
@@ -607,6 +637,46 @@
     gsap.from('.visit [data-fade]', {
       opacity: 0, duration: 1.4, ease: 'power2.out', stagger: 0.15, clearProps: 'opacity',
       scrollTrigger: { trigger: '.visit-inner', start: 'top 75%', once: true }
+    });
+  }
+
+  /* Phone-only motion. Hover and cursor effects don't exist on touch, and big
+     parallax distances feel wrong on a small screen, so phones get their own
+     set: ambient float, directional mask reveals, swipe-driven cards, in-card
+     photo drift and scroll-triggered underlines. */
+  function mobileMotion() {
+    // hero: layers float gently on their own, so the scene is alive before the first scroll
+    gsap.to(['.layer.far', '.layer.mid', '.layer.near'], {
+      y: (i) => -(5 + i * 4), duration: 4.5, ease: 'sine.inOut', yoyo: true, repeat: -1, stagger: 0.7
+    });
+
+    // chapter 3: photos unmask from alternating sides
+    $$('.river .frame').forEach((f, i) => {
+      gsap.fromTo(f,
+        { clipPath: `inset(${i % 2 ? '0% 0% 0% 100%' : '0% 100% 0% 0%'} round 4px)` },
+        {
+          clipPath: 'inset(0% 0% 0% 0% round 4px)', duration: 1.3, ease: 'power3.out', clearProps: 'clipPath',
+          scrollTrigger: { trigger: f, start: 'top 90%', once: true }
+        });
+    });
+
+    // chapter 4: the swipe cards unveil, staggered, as the carousel scrolls into view
+    gsap.from('.panel-img', {
+      clipPath: 'inset(0% 100% 0% 0% round 4px)', duration: 1.1, ease: 'power3.out', stagger: 0.12, clearProps: 'clipPath',
+      scrollTrigger: { trigger: '#libTrack', start: 'top 88%', once: true }
+    });
+    gsap.from('.panel-body', {
+      opacity: 0, y: 28, duration: 0.9, ease: 'power3.out', stagger: 0.12, clearProps: 'all',
+      scrollTrigger: { trigger: '#libTrack', start: 'top 80%', once: true }
+    });
+
+    // chapter 7: photo drifts inside its frame while scrolling; underline draws when the card is reached
+    $$('.best .card').forEach((card) => {
+      gsap.fromTo($('.card-img img', card), { yPercent: -6 }, {
+        yPercent: 6, ease: 'none',
+        scrollTrigger: { trigger: card, start: 'top bottom', end: 'bottom top', scrub: true }
+      });
+      ScrollTrigger.create({ trigger: card, start: 'top 65%', once: true, onEnter: () => card.classList.add('seen') });
     });
   }
 
@@ -645,15 +715,16 @@
 
       reveals();
       heroScroll(k);
-      source();
+      source(isDesktop);
       river(k);
       const lib = library(isDesktop);
       if (lib) cleanups.push(lib);
-      rituals();
-      const cr = craft();
+      rituals(isDesktop);
+      const cr = craft(isDesktop);
       if (cr) cleanups.push(cr);
       best();
       visit();
+      if (!isDesktop) mobileMotion();
       chromeTriggers();
 
       return () => cleanups.forEach((fn) => fn());
