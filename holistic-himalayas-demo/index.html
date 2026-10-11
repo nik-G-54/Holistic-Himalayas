@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Holistic Himalayas</title>
+<meta name="description" content="Himalayan herbs, teas and rituals, packed by hand at our store near Laxman Jhula, Tapovan, Rishikesh.">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Manrope:wght@400;500;600;700&family=Tiro+Devanagari+Sanskrit&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ PRELOADER ============ -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader__inner">
+    <svg class="preloader__peak" viewBox="0 0 120 60" aria-hidden="true"><path d="M2 58 L40 18 L54 32 L72 6 L118 58" /></svg>
+    <p class="preloader__mark">The Holistic Himalayas</p>
+    <div class="preloader__bar"><span id="preloaderFill"></span></div>
+    <p class="preloader__note">Tapovan · Rishikesh</p>
+  </div>
+</div>
+
+<!-- ============ FIXED UI ============ -->
+<div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__label">View</span></div>
+
+<header class="nav" id="nav">
+  <a href="#top" class="nav__logo" data-scroll>The Holistic <em>Himalayas</em></a>
+  <nav class="nav__links" aria-label="Main">
+    <a href="#rishikesh" data-scroll>Our Story</a>
+    <a href="#library" data-scroll>Herbs</a>
+    <a href="#ritual" data-scroll>Rituals</a>
+    <a href="#visit" data-scroll>Visit</a>
+  </nav>
+  <a class="btn btn--small btn--saffron" href="https://theholistichimalayas.com/shop/" target="_blank" rel="noopener">Shop</a>
+  <button class="nav__burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <nav aria-label="Mobile">
+    <a href="#rishikesh" data-scroll>Our Story</a>
+    <a href="#library" data-scroll>The Herbs</a>
+    <a href="#ritual" data-scroll>Rituals</a>
+    <a href="#visit" data-scroll>Visit Us</a>
+    <a href="https://theholistichimalayas.com/shop/" target="_blank" rel="noopener">Shop all 106 →</a>
+  </nav>
+  <p class="menu__addr">Near Laxman Jhula, Tapovan, Rishikesh 249192</p>
+</div>
+
+<aside class="alt" id="alt" aria-hidden="true">
+  <span class="alt__label">Altitude</span>
+  <span class="alt__value"><span id="altValue">4,200</span><small> m</small></span>
+  <span class="alt__track"><span id="altFill"></span></span>
+  <span class="alt__place" id="altPlace">High Himalaya</span>
+</aside>
+
+<nav class="dots" id="dots" aria-label="Chapters">
+  <a href="#top" data-scroll><span>01 · The Mountains</span></a>
+  <a href="#source" data-scroll><span>02 · The Source</span></a>
+  <a href="#rishikesh" data-scroll><span>03 · Rishikesh</span></a>
+  <a href="#library" data-scroll><span>04 · Herb Library</span></a>
+  <a href="#ritual" data-scroll><span>05 · Rituals</span></a>
+  <a href="#craft" data-scroll><span>06 · The Craft</span></a>
+  <a href="#bestsellers" data-scroll><span>07 · Most Loved</span></a>
+  <a href="#visit" data-scroll><span>08 · Visit Us</span></a>
+</nav>
+
+<main>
+
+<!-- ============ 01 HERO ============ -->
+<section class="hero" id="top" data-theme="dark" aria-labelledby="heroTitle">
+  <div class="hero__scene" id="heroScene" aria-hidden="true">
+    <div class="hero__sky"></div>
+    <div class="hero__sun"></div>
+    <canvas class="hero__canvas" id="heroCanvas"></canvas>
+    <svg class="layer layer--far" data-speed="8" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice">
+      <defs>
+        <linearGradient id="gFar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5d7480"/><stop offset="1" stop-color="#2c3d40"/></linearGradient>
+      </defs>
+      <path fill="url(#gFar)" d="M0 420 L120 330 L210 372 L330 250 L420 320 L520 214 L610 300 L720 150 L820 282 L930 222 L1040 312 L1150 196 L1260 300 L1350 248 L1440 318 V600 H0Z"/>
+      <path class="snow" d="M690 196 L720 150 L752 200 L736 192 L722 210 L706 190Z M300 288 L330 250 L358 290 L344 284 L330 296 L316 282Z M1122 236 L1150 196 L1176 232 L1162 226 L1150 240 L1138 228Z M496 250 L520 214 L546 252 L532 246 L520 258 L508 246Z"/>
+    </svg>
+    <div class="mist mist--1"></div>
+    <svg class="layer layer--mid" data-speed="22" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice">
+      <path fill="#2a4038" d="M0 462 L100 402 L200 440 L310 360 L400 420 L500 340 L620 430 L740 368 L860 440 L980 358 L1100 430 L1210 380 L1320 440 L1440 392 V600 H0Z"/>
+    </svg>
+    <div class="mist mist--2"></div>
+    <svg class="layer layer--near" data-speed="40" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice">
+      <path fill="#1f3a2b" d="M0 500 C120 450 220 470 320 430 C430 392 520 470 640 460 C760 450 820 400 940 420 C1060 440 1140 490 1260 470 C1340 455 1400 440 1440 450 V600 H0Z"/>
+    </svg>
+    <svg class="layer layer--front" data-speed="62" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice">
+      <path id="frontRidge" fill="#0f1a14" d="M0 560 C160 520 300 540 440 525 C600 508 700 560 860 548 C1020 536 1140 500 1300 520 C1380 530 1420 540 1440 545 V600 H0Z"/>
+      <g id="trees" fill="#0f1a14"></g>
+    </svg>
+  </div>
+
+  <div class="hero__content">
+    <p class="eyebrow hero__eyebrow">Rishikesh · Uttarakhand</p>
+    <h1 class="hero__title" id="heroTitle" data-split>Where the mountains keep their medicine.</h1>
+    <p class="hero__sub">Herbs, teas and rituals from the Himalayas, packed by hand in Rishikesh.</p>
+    <div class="hero__actions">
+      <a class="btn btn--saffron magnetic" href="https://theholistichimalayas.com/shop/" target="_blank" rel="noopener">Shop the collection</a>
+      <a class="link-arrow" href="#source" data-scroll>Begin the journey <span aria-hidden="true">↓</span></a>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true"><span class="scroll-cue__line"></span>Scroll</div>
+</section>
+
+<!-- ============ 02 THE SOURCE ============ -->
+<section class="source" id="source" data-theme="dark" aria-labelledby="sourceTitle">
+  <div class="source__pin">
+    <p class="eyebrow">Chapter 02 · The Source</p>
+    <h2 class="sr-only" id="sourceTitle">The Source</h2>
+    <div class="source__lines">
+      <p class="source__line">Grown <em>high.</em></p>
+      <p class="source__line">Gathered <em>slow.</em></p>
+      <p class="source__line">Dried in the <em>mountain air.</em></p>
+    </div>
+    <figure class="source__img source__img--1"><img src="images/ashwagandha.jpg" alt="Ashwagandha roots in a kraft pouch" width="300" height="300"><figcaption><span lang="sa">अश्वगंधा</span> Ashwagandha root</figcaption></figure>
+    <figure class="source__img source__img--2"><img src="images/brahmi.jpg" alt="Brahmi leaves in a green pouch" width="300" height="300"><figcaption><span lang="sa">ब्राह्मी</span> Brahmi leaf</figcaption></figure>
+    <figure class="source__img source__img--3"><img src="images/hibiscus.jpg" alt="Dried hibiscus flowers" width="300" height="300"><figcaption><span lang="hi">गुड़हल</span> Hibiscus flower</figcaption></figure>
+    <p class="source__note">Roots, leaves and flowers from Himalayan valleys and Indian farms, picked in their season.</p>
+  </div>
+</section>
+
+<!-- ============ 03 RISHIKESH ============ -->
+<section class="river" id="rishikesh" data-theme="light" aria-labelledby="riverTitle">
+  <svg class="river__waves" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 60 C240 20 480 100 720 60 S1200 20 1440 60"/>
+    <path d="M0 100 C240 60 480 140 720 100 S1200 60 1440 100"/>
+    <path d="M0 140 C240 100 480 180 720 140 S1200 100 1440 140"/>
+    <path d="M0 180 C240 140 480 220 720 180 S1200 140 1440 180"/>
+  </svg>
+  <div class="wrap river__grid">
+    <div class="river__text">
+      <p class="eyebrow eyebrow--dark" data-reveal>Chapter 03 · Tapovan, Rishikesh</p>
+      <h2 class="h2" id="riverTitle" data-split>From the foothills of the Ganga.</h2>
+      <p class="lead" data-reveal>Our store sits near Laxman Jhula in Tapovan, where seekers have come to the river for centuries. Every pouch on our shelves is filled, sealed and labelled here.</p>
+      <dl class="facts" data-reveal>
+        <div><dt>Herbs, teas &amp; blends</dt><dd>106</dd></div>
+        <div><dt>Packed in</dt><dd>Tapovan</dd></div>
+        <div><dt>PIN</dt><dd>249192</dd></div>
+      </dl>
+    </div>
+    <div class="river__photos">
+      <figure class="frame frame--a" data-depth="-60"><img src="images/himalayan-bloom.jpg" alt="Himalayan Bloom tea pouch on the shop shelf" width="300" height="300"><figcaption>Himalayan Bloom</figcaption></figure>
+      <figure class="frame frame--b" data-depth="40"><img src="images/moon-tea.jpg" alt="Moon Tea pouch in the store" width="300" height="300"><figcaption>Moon Tea</figcaption></figure>
+      <figure class="frame frame--c" data-depth="-20"><img src="images/shilajit.jpg" alt="Shilajit jar in the store" width="300" height="300"><figcaption>Shilajit</figcaption></figure>
+      <span class="river__pin" aria-hidden="true">249192</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 HERB LIBRARY ============ -->
+<section class="library" id="library" data-theme="dark" aria-labelledby="libTitle">
+  <div class="library__head wrap">
+    <p class="eyebrow">Chapter 04 · The Herb Library</p>
+    <h2 class="h2" id="libTitle" data-split>106 gifts of the mountains.</h2>
+    <p class="library__hint">Five shelves from our store. Keep scrolling to walk along them.</p>
+  </div>
+  <div class="library__viewport">
+    <div class="library__track" id="libTrack">
+      <article class="shelf">
+        <figure class="shelf__img"><img src="images/ashwagandha.jpg" alt="Ashwagandha raw roots" width="300" height="300"></figure>
+        <div class="shelf__text">
+          <span class="shelf__num">01</span>
+          <p class="shelf__deva" lang="hi">जड़ी-बूटी</p>
+          <h3>Raw Herbs</h3>
+          <p>Roots, barks and leaves, whole and unblended.</p>
+          <ul><li>Ashwagandha</li><li>Brahmi</li><li>Shatavari</li></ul>
+          <a class="link-arrow" href="https://theholistichimalayas.com/shop/" target="_blank" rel="noopener">Explore <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+      <article class="shelf">
+        <figure class="shelf__img"><img src="images/hibiscus.jpg" alt="Hibiscus tea" width="300" height="300"></figure>
+        <div class="shelf__text">
+          <span class="shelf__num">02</span>
+          <p class="shelf__deva" lang="hi">चाय</p>
+          <h3>Herbal Teas</h3>
+          <p>Flowers and leaves for a slower cup.</p>
+          <ul><li>Hibiscus</li><li>Blue Pea</li><li>Chamomile</li></ul>
+          <a class="link-arrow" href="https://theholistichimalayas.com/shop/" target="_blank" rel="noopener">Explore <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+      <article class="shelf">
+        <figure class="shelf__img"><img src="images/saffron.jpg" alt="Kashmiri saffron jars" width="300" height="300"></figure>
+        <div class="shelf__text">
+          <span class="shelf__num">03</span>
+          <p class="shelf__deva" lang="hi">मसाले</p>
+          <h3>Spices</h3>
+          <p>From Kashmir's saffron fields to the chai pot.</p>
+          <ul><li>Kashmiri Saffron</li><li>Chai Masala</li><li>Star Anise</li></ul>
+          <a class="link-arrow" href="https://theholistichimalayas.com/shop/" target="_blank" rel="noopener">Explore <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+      <article class="shelf">
+        <figure class="shelf__img"><img src="images/neem-face-wash.jpg" alt="Neem Chandan face wash" width="300" height="300"></figure>
+        <div class="shelf__text">
+          <span class="shelf__num">04</span>
+          <p class="shelf__deva" lang="hi">स्नान</p>
+          <h3>Self-Care</h3>
+          <p>Clays, powders and washes, made the old way.</p>
+          <ul><li>Neem Chandan Face Wash</li><li>Ubtan</li><li>Multani Mitti</li></ul>
+          <a class="link-arrow" href="https://theholistichimalayas.com/shop/" target="_blank" rel="noopener">Explore <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+      <article class="shelf">
+        <figure class="shelf__img"><img src="images/shilajit.jpg" alt="Shilajit" width="300" height="300"></figure>
+        <div class="shelf__text">
+          <span class="shelf__num">05</span>
+          <p class="shelf__deva" lang="sa">रसायन</p>
+          <h3>Wellness Blends</h3>
+          <p>Our house blends, built on tradition.</p>
+          <ul><li>Shilajit</li><li>Yogic Fuel</li><li>Focus Fuel</li></ul>
+          <a class="link-arrow" href="https://theholistichimalayas.com/shop/" target="_blank" rel="noopener">Explore <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+    </div>
+  </div>
+  <div class="library__progress wrap" aria-hidden="true">
+    <span class="library__bar"><span id="libBar"></span></span>
+    <span class="library__count" id="libCount">01 / 05</span>
+  </div>
+</section>
+
+<!-- ============ 05 RITUALS ============ -->
+<section class="ritual" id="ritual" data-theme="light" aria-labelledby="ritualTitle">
+  <div class="ritual__pin">
+    <svg class="ritual__arc" viewBox="0 0 1000 220" preserveAspectRatio="none" aria-hidden="true">
+      <path id="sunArc" d="M40 210 Q500 -60 960 210"/>
+    </svg>
+    <div class="ritual__orb" id="ritualOrb" aria-hidden="true"></div>
+    <div class="ritual__head">
+      <p class="eyebrow eyebrow--dark">Chapter 05 · Daily Rituals</p>
+      <h2 class="h2" id="ritualTitle">Morning. Afternoon. <em>Night.</em></h2>
+    </div>
+    <div class="ritual__scenes">
+      <article class="scene" data-bg="#efd9ae" data-fg="#1b231e">
+        <div class="scene__text">
+          <span class="scene__time">06:00 · Morning</span>
+          <h3>Begin with warmth.</h3>
+          <p>A pot of chai with our masala, or a cup of tulsi while the town wakes up.</p>
+          <p class="scene__products"><a href="https://theholistichimalayas.com/product/chai-masala/" target="_blank" rel="noopener">Chai Masala →</a> <a href="https://theholistichimalayas.com/product/tulsi-3/" target="_blank" rel="noopener">Tulsi →</a></p>
+        </div>
+        <figure class="scene__img"><img src="images/chai-masala.jpg" alt="Chai Masala pouch" width="300" height="300"></figure>
+      </article>
+      <article class="scene" data-bg="#e6a690" data-fg="#2a1418">
+        <div class="scene__text">
+          <span class="scene__time">15:00 · Afternoon</span>
+          <h3>Pause with colour.</h3>
+          <p>Deep red hibiscus and blue pea flowers, steeped for a few quiet minutes.</p>
+          <p class="scene__products"><a href="https://theholistichimalayas.com/product/hibiscus-tea/" target="_blank" rel="noopener">Hibiscus Tea →</a> <a href="https://theholistichimalayas.com/product/blue-pea-tea/" target="_blank" rel="noopener">Blue Pea Tea →</a></p>
+        </div>
+        <figure class="scene__img"><img src="images/blue-pea.jpg" alt="Blue Pea Tea pouch" width="300" height="300"></figure>
+      </article>
+      <article class="scene" data-bg="#151d2c" data-fg="#e8ecea">
+        <div class="scene__text">
+          <span class="scene__time">21:00 · Night</span>
+          <h3>End the day softly.</h3>
+          <p>A warm cup of a night-time blend before the lights go out.</p>
+          <p class="scene__products"><a href="https://theholistichimalayas.com/product/moon-tea/" target="_blank" rel="noopener">Moon Tea →</a> <a href="https://theholistichimalayas.com/product/lemme-sleep/" target="_blank" rel="noopener">Lemme Sleep →</a></p>
+        </div>
+        <figure class="scene__img"><img src="images/moon-tea.jpg" alt="Moon Tea pouch" width="300" height="300"></figure>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 THE CRAFT ============ -->
+<section class="craft" id="craft" data-theme="light" aria-labelledby="craftTitle">
+  <div class="craft__pin">
+    <div class="craft__head">
+      <p class="eyebrow eyebrow--dark">Chapter 06 · The Craft</p>
+      <h2 class="h2" id="craftTitle" data-split>Packed by hand. Sealed fresh.</h2>
+    </div>
+    <div class="craft__stage">
+      <svg class="craft__lines" viewBox="0 0 800 500" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M400 170 L240 90 L90 90"/>
+        <path d="M480 260 L610 200 L740 200"/>
+        <path d="M380 340 L250 420 L90 420"/>
+      </svg>
+      <figure class="craft__pouch" id="pouch"><img src="images/himalayan-bloom.jpg" alt="A hand-packed kraft pouch of Himalayan Bloom" width="300" height="300"></figure>
+      <span class="callout callout--1"><b>Hand-picked</b>Sorted by hand at the store</span>
+      <span class="callout callout--2"><b>Small batches</b>Packed in small lots</span>
+      <span class="callout callout--3"><b>Kraft packed</b>Paper pouch, hand-written label</span>
+    </div>
+    <p class="craft__note" data-reveal>No fancy boxes. Just the herb, the paper, and a label we write ourselves.</p>
+  </div>
+</section>
+
+<!-- ============ 07 BESTSELLERS ============ -->
+<section class="best" id="bestsellers" data-theme="light" aria-labelledby="bestTitle">
+  <div class="wrap">
+    <div class="best__head">
+      <p class="eyebrow eyebrow--dark" data-reveal>Chapter 07 · Most Loved</p>
+      <h2 class="h2" id="bestTitle" data-split>Loved by our visitors.</h2>
+    </div>
+    <div class="best__grid">
+      <a class="card" data-card href="https://theholistichimalayas.com/product/ashwagandha-raw/" target="_blank" rel="noopener">
+        <figure><img src="images/ashwagandha.jpg" alt="Ashwagandha" width="300" height="300" loading="lazy"></figure>
+        <div class="card__body"><h3>Ashwagandha <span lang="sa">अश्वगंधा</span></h3><p class="card__price">₹400 – ₹4,000</p><span class="card__cta">Choose size →</span></div>
+      </a>
+      <a class="card" data-card href="https://theholistichimalayas.com/product/triphala-2/" target="_blank" rel="noopener">
+        <figure><img src="images/triphala.jpg" alt="Triphala" width="300" height="300" loading="lazy"></figure>
+        <div class="card__body"><h3>Triphala <span lang="sa">त्रिफला</span></h3><p class="card__price">₹200 – ₹1,800</p><span class="card__cta">Choose size →</span></div>
+      </a>
+      <a class="card" data-card href="https://theholistichimalayas.com/product/himalayan-bloom/" target="_blank" rel="noopener">
+        <figure><img src="images/himalayan-bloom.jpg" alt="Himalayan Bloom" width="300" height="300" loading="lazy"></figure>
+        <div class="card__body"><h3>Himalayan Bloom <span lang="hi">हिमालयन ब्लूम</span></h3><p class="card__price">₹500 – ₹2,700</p><span class="card__cta">Choose size →</span></div>
+      </a>
+      <a class="card" data-card href="https://theholistichimalayas.com/product/hibiscus-tea/" target="_blank" rel="noopener">
+        <figure><img src="images/hibiscus.jpg" alt="Hibiscus Tea" width="300" height="300" loading="lazy"></figure>
+        <div class="card__body"><h3>Hibiscus Tea <span lang="hi">गुड़हल</span></h3><p class="card__price">₹230 – ₹960</p><span class="card__cta">Choose size →</span></div>
+      </a>
+      <a class="card" data-card href="https://theholistichimalayas.com/product/kashmiri-saffron/" target="_blank" rel="noopener">
+        <figure><img src="images/saffron.jpg" alt="Kashmiri Saffron" width="300" height="300" loading="lazy"></figure>
+        <div class="card__body"><h3>Kashmiri Saffron <span lang="hi">केसर</span></h3><p class="card__price">₹600 – ₹1,000</p><span class="card__cta">Choose size →</span></div>
+      </a>
+      <a class="card" data-card href="https://theholistichimalayas.com/product/chai-masala/" target="_blank" rel="noopener">
+        <figure><img src="images/chai-masala.jpg" alt="Chai Masala" width="300" height="300" loading="lazy"></figure>
+        <div class="card__body"><h3>Chai Masala <span lang="hi">चाय मसाला</span></h3><p class="card__price">₹300 – ₹2,250</p><span class="card__cta">Choose size →</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 VISIT ============ -->
+<section class="visit" id="visit" data-theme="dark" aria-labelledby="visitTitle">
+  <div class="wrap visit__grid">
+    <div class="visit__text">
+      <p class="eyebrow" data-reveal>Chapter 08 · Visit Us</p>
+      <h2 class="h2" id="visitTitle" data-split>Come sit with us in Tapovan.</h2>
+      <address class="visit__addr" id="addr" data-reveal>The Holistic Himalayas<br>Near Laxman Jhula, Tapovan<br>Rishikesh, Uttarakhand 249192</address>
+      <dl class="visit__meta" data-reveal>
+        <div><dt>Hours</dt><dd class="placeholder">Open daily · hours to be confirmed</dd></div>
+        <div><dt>WhatsApp</dt><dd class="placeholder">Number to be added</dd></div>
+      </dl>
+      <div class="visit__actions" data-reveal>
+        <a class="btn btn--saffron magnetic" href="https://www.google.com/maps/search/?api=1&amp;query=The+Holistic+Himalayas+Tapovan+Rishikesh" target="_blank" rel="noopener">Get directions</a>
+        <button class="btn btn--ghost" id="copyAddr" type="button">Copy address</button>
+      </div>
+    </div>
+    <div class="visit__map" data-reveal>
+      <svg viewBox="0 0 480 420" role="img" aria-label="Sketch map: the store in Tapovan, beside the Ganga near Laxman Jhula">
+        <path class="map__ridge" d="M0 70 C80 40 140 90 220 60 C300 30 380 80 480 50"/>
+        <path class="map__ridge" d="M0 110 C90 85 150 120 240 100 C330 80 400 115 480 95"/>
+        <path class="map__river" id="mapRiver" d="M70 0 C120 90 60 160 150 220 C240 280 220 340 320 420"/>
+        <line class="map__bridge" x1="118" y1="196" x2="196" y2="168"/>
+        <text x="206" y="166" class="map__label">Laxman Jhula</text>
+        <text x="40" y="300" class="map__label map__label--river">Ganga</text>
+        <text x="300" y="250" class="map__label">Tapovan</text>
+        <g class="map__pin" transform="translate(262 214)">
+          <circle class="map__pulse" r="10"/>
+          <circle r="7"/>
+        </g>
+        <text x="282" y="210" class="map__label map__label--store">Our store</text>
+        <text x="20" y="400" class="map__label map__label--small">Sketch · not to scale</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 09 FINAL ============ -->
+<section class="final" id="final" data-theme="dark" aria-labelledby="finalTitle">
+  <div class="final__content">
+    <p class="eyebrow">The journey ends with you</p>
+    <h2 class="final__title" id="finalTitle" data-split>Bring the Himalayas home.</h2>
+    <a class="btn btn--saffron btn--big magnetic" href="https://theholistichimalayas.com/shop/" target="_blank" rel="noopener">Shop the collection</a>
+  </div>
+  <svg class="final__mountains" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <path fill="#22322e" d="M0 210 L140 130 L260 180 L400 80 L520 160 L660 60 L800 170 L940 110 L1080 180 L1220 90 L1340 150 L1440 120 V300 H0Z"/>
+    <path fill="#1a2a22" d="M0 250 C200 210 360 240 520 220 C700 196 860 250 1040 236 C1200 224 1340 210 1440 220 V300 H0Z"/>
+  </svg>
+  <footer class="footer">
+    <p class="footer__brand">The Holistic <em>Himalayas</em></p>
+    <nav class="footer__links" aria-label="Footer">
+      <a href="https://theholistichimalayas.com/shop/" target="_blank" rel="noopener">Shop</a>
+      <a href="#rishikesh" data-scroll>Our Story</a>
+      <a href="#visit" data-scroll>Visit</a>
+      <a href="#final" class="placeholder" title="Instagram link to be added">Instagram</a>
+    </nav>
+    <p class="footer__copy">© 2026 The Holistic Himalayas. All rights reserved.</p>
+  </footer>
+</section>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
